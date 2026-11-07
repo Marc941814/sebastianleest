@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="description" content="Een rustige, speelse leescarrousel voor beginnende lezers.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <title>Mijn leescarrousel</title>
+  <style>
+    :root{color-scheme:light;--ink:#243047;--muted:#667085;--paper:#f5f1e8;--card:#fffdf8;--line:#e5dfd2;--accent:#315f70;--accent-light:#e4eef0;--soft:#f0eadf}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+    button{font:inherit;touch-action:manipulation}
+    .shell{width:min(720px,100%);margin:auto;padding:20px 18px calc(28px + env(safe-area-inset-bottom));min-height:100vh;display:flex;flex-direction:column;gap:19px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    h1{font-size:clamp(22px,5vw,29px);margin:0;letter-spacing:-.5px}
+    .sub{font-size:14px;color:var(--muted);margin-top:3px}
+    .install{display:none;border:0;border-radius:12px;background:var(--accent);color:white;padding:10px 13px;font-weight:650}
+    .section-label{font-size:14px;font-weight:700;margin-bottom:9px}
+    .levels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .level{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;padding:12px 10px;text-align:left;font-size:14px;min-height:53px}
+    .level small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+    .level.active{background:var(--accent-light);border:2px solid var(--accent);padding:11px 9px;font-weight:700}
+    .meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+    .progress{height:6px;border-radius:20px;background:var(--line);overflow:hidden;margin-top:-11px}
+    .progress>div{height:100%;width:0;background:var(--accent);transition:width .2s}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:24px;min-height:clamp(230px,37vh,330px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px 16px;gap:14px;box-shadow:0 5px 20px #2430470a}
+    .prompt{font-size:13px;color:var(--muted)}
+    .word{font-size:clamp(58px,14vw,92px);font-weight:750;letter-spacing:2px;line-height:1.15;overflow-wrap:anywhere}
+    .hint{font-size:14px;color:var(--muted);min-height:20px}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{border:1px solid var(--line);border-radius:14px;padding:14px 12px;min-height:52px;background:var(--card);color:var(--ink);font-weight:650}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:white}
+    .nav{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+    .extras{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .tip{background:var(--soft);border-radius:15px;padding:14px 15px;font-size:13px;line-height:1.5;color:#454b55}
+    .tip strong{display:block;margin-bottom:4px;color:var(--ink)}
+    footer{text-align:center;font-size:11px;color:var(--muted)}
+    button:focus-visible{outline:3px solid #d18a36;outline-offset:3px}
+    @media(min-width:560px){.levels{grid-template-columns:repeat(4,minmax(0,1fr))}.level{font-size:13px}.shell{padding-top:28px}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <div><h1>Mijn leescarrousel</h1><div class="sub">Even samen lezen. Helemaal op je eigen tempo.</div></div>
+    <button class="install" id="install">Installeer</button>
+  </header>
+
+  <section>
+    <div class="section-label">Kies een leesronde</div>
+    <div class="levels" id="levels">
+      <button class="level active" data-level="0">1 · Korte woorden<small>vis · tak · pen</small></button>
+      <button class="level" data-level="1">2 · Lange klinkers<small>maan · teen · boot</small></button>
+      <button class="level" data-level="2">3 · Andere klanken<small>boek · mier · deur</small></button>
+      <button class="level" data-level="3">4 · Door elkaar<small>alle bekende klanken</small></button>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta"><strong id="round-title">Ronde 1 · Korte woorden</strong><span id="counter">1 / 12</span></div>
+    <div class="progress"><div id="progress-fill"></div></div>
+  </section>
+
+  <section class="card" aria-live="polite">
+    <div class="prompt">Lees het woord hardop</div>
+    <div class="word" id="word">vis</div>
+    <div class="hint" id="hint">Welk woord staat hier?</div>
+  </section>
+
+  <section class="actions">
+    <button class="btn" id="speak">🔊 Luister</button>
+    <button class="btn" id="repeat">↻ Nog eens bekijken</button>
+  </section>
+  <section class="nav">
+    <button class="btn" id="prev">← Vorige</button>
+    <button class="btn primary" id="next">Volgende →</button>
+  </section>
+  <section class="extras">
+    <button class="btn" id="shuffle">🔀 Hussel woorden</button>
+    <button class="btn" id="restart">Opnieuw beginnen</button>
+  </section>
+
+  <aside class="tip"><strong>Kleine leestip</strong>Laat je kind eerst zelf proberen. Tik daarna op ‘Luister’ om het woord te horen. Neem rustig de tijd: één woord goed lezen is al mooi.</aside>
+  <footer id="status">De uitspraak gebruikt de Nederlandse stem van het apparaat.</footer>
+</main>
+<script>
+(() => {
+  const rounds = [
+    {title:"Korte woorden",words:["vis","tak","pen","bus","kip","sok","zon","jas","hek","bed","map","rug"]},
+    {title:"Lange klinkers",words:["maan","teen","boot","muur","kaas","peer","roos","vuur","been","raam","rook","neus"]},
+    {title:"Andere klanken",words:["boek","koek","doek","voet","mier","wiel","kies","deur","neus","muis","huis","tuin"]},
+    {title:"Door elkaar",words:["vis","maan","boek","tak","peer","mier","bus","boot","huis","pen","roos","deur"]}
+  ];
+  let level=0,index=0,words=[...rounds[0].words],deferredPrompt=null;
+  const $=id=>document.getElementById(id);
+  function render(){
+    $("word").textContent=words[index];
+    $("counter").textContent=(index+1)+" / "+words.length;
+    $("round-title").textContent="Ronde "+(level+1)+" · "+rounds[level].title;
+    $("progress-fill").style.width=((index+1)/words.length*100)+"%";
+    $("hint").textContent="Welk woord staat hier?";
+    document.querySelectorAll(".level").forEach((b,i)=>b.classList.toggle("active",i===level));
+  }
+  function choose(n){if("speechSynthesis"in window)speechSynthesis.cancel();level=n;words=[...rounds[level].words];index=0;render();}
+  function speak(){
+    if(!("speechSynthesis"in window)){$("status").textContent="Voorlezen wordt niet ondersteund op dit apparaat.";return;}
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(words[index]);u.lang="nl-NL";u.rate=.78;
+    const voice=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith("nl"));
+    if(voice)u.voice=voice;
+    u.onerror=()=>{$("status").textContent="De uitspraak kon niet worden afgespeeld. Controleer de spraakinstellingen van het apparaat.";};
+    speechSynthesis.speak(u);
+  }
+  document.querySelectorAll(".level").forEach(b=>b.addEventListener("click",()=>choose(Number(b.dataset.level))));
+  $("next").addEventListener("click",()=>{index=(index+1)%words.length;render();});
+  $("prev").addEventListener("click",()=>{index=(index-1+words.length)%words.length;render();});
+  $("speak").addEventListener("click",speak);
+  $("repeat").addEventListener("click",()=>{render();});
+  $("shuffle").addEventListener("click",()=>{words=[...words].sort(()=>Math.random()-.5);index=0;render();});
+  $("restart").addEventListener("click",()=>{words=[...rounds[level].words];index=0;render();});
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("install").style.display="block";});
+  $("install").addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$("install").style.display="none";});
+  if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  render();
+})();
+</script>
+</body>
+</html>
