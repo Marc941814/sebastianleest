@@ -30,3 +30,5 @@ De goedgekeurde achtergrond voor de overzichtsomgeving staat in images/overview-
 
 Versie 8 – overzichtsomgeving update
 De overzichtsomgeving gebruikt de goedgekeurde doorlopende achtergrond. Acht locatieknoppen zijn als interactieve elementen over het landschap geplaatst; vier openen de bestaande oefeningen en vier zijn nog niet actief. Sebastian verschijnt één keer met de goedgekeurde begroetingspose. De onderste footerbanner is verwijderd. De oefenomgevingen zelf zijn nog niet opnieuw vormgegeven.
+
+Onderhoud: underwater-footer.jpg is verwijderd; deze afbeelding wordt niet meer gebruikt door de app en staat niet meer in de offlinecache.
