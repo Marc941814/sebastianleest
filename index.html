@@ -89,10 +89,83 @@ header{background:#ffffffc9;border:2px solid #b5efff;border-radius:18px;padding:
   display:none;
 }
 
+
+/* v8 fase 1: interactieve overzichtsomgeving op de goedgekeurde achtergrond */
+#home .home-world{
+  position:relative; width:100%; aspect-ratio:1670 / 941; min-height:0;
+  padding:0; overflow:hidden; border-radius:24px;
+  background-image:url('./images/overview-background.png');
+  background-size:100% 100%; background-position:center; background-repeat:no-repeat;
+  border:3px solid #a9efff; box-shadow:inset 0 0 35px #baf7ff35;
+}
+#home .home-world:before{display:none;content:none}
+#home .map-heading{
+  position:absolute; z-index:4; top:2.3%; left:50%; transform:translateX(-50%);
+  margin:0; padding:7px 18px; color:#fff; font-size:clamp(16px,2.1vw,30px);
+  line-height:1.15; white-space:nowrap; text-align:center;
+  text-shadow:0 2px 5px #003b62,0 3px 9px #003b6280;
+  background:transparent; border:0; box-shadow:none;
+}
+#home .map-sebastian{position:absolute; z-index:5; left:2.2%; bottom:5%; width:19%; display:flex; align-items:center; gap:5px}
+#home .map-sebastian img{display:block;width:48%;height:auto;max-height:31%;object-fit:contain;filter:drop-shadow(0 5px 5px #003b6260)}
+#home .map-speech{background:#f5fdffed;border:2px solid #fff;border-radius:18px;padding:9px 12px;color:#123c58;font-size:clamp(10px,1.05vw,15px);font-weight:800;line-height:1.25;box-shadow:0 4px 0 #07527e70}
+#home .map-locations{position:absolute;inset:0;z-index:3}
+#home .map-place{
+ position:absolute; transform:translate(-50%,-50%); width:14.5%; min-height:8.5%;
+ border:2px solid #fff; border-radius:15px; padding:6px 5px;
+ display:flex; flex-direction:column; justify-content:center; align-items:center; gap:2px;
+ color:#123c58; background:linear-gradient(180deg,#fffdf0f2,#ffe39df2);
+ box-shadow:0 4px 0 #07527eaa,0 5px 12px #003b6240;
+ font:inherit; cursor:pointer; text-align:center;
+}
+#home .map-place span{font-weight:850;font-size:clamp(9px,.95vw,14px);line-height:1.05}
+#home .map-place small{font-size:clamp(8px,.75vw,11px);font-weight:750;color:#17466a;line-height:1.05}
+#home .map-place:focus-visible{outline:4px solid #ffdf58;outline-offset:3px}
+#home .map-place.active:hover{filter:brightness(1.08);transform:translate(-50%,-53%)}
+#home .map-place.future{background:linear-gradient(180deg,#d9f2f5ed,#b7dfe9ed);border-style:dashed;box-shadow:0 3px 0 #07527e88;color:#315a6b;cursor:default;opacity:.92}
+#home .map-place.future small{color:#496c7a}
+#home .map-place.unavailable{filter:grayscale(1);opacity:.48;cursor:not-allowed}
+#home .map-place.library{left:31%;top:34%}
+#home .map-place.crystals{left:82%;top:34%}
+#home .map-place.shipwreck{left:62%;top:26%}
+#home .map-place.arch{left:50%;top:52%}
+#home .map-place.ruins{left:29%;top:67%}
+#home .map-place.treasure{left:77%;top:57%}
+#home .map-place.grotto{left:88%;top:75%}
+#home .map-place.coral{left:59%;top:78%}
+#home .footer{display:none}
+#home .sea-footer{display:none}
+@media(max-width:700px){
+ #home .home-world{aspect-ratio:4 / 3;background-size:cover;background-position:center}
+ #home .map-heading{top:2%;font-size:clamp(13px,3vw,19px)}
+ #home .map-place{width:19%;min-height:9%;border-radius:10px;padding:4px 3px}
+ #home .map-place span{font-size:clamp(8px,1.8vw,11px)}
+ #home .map-place small{font-size:clamp(7px,1.4vw,9px)}
+ #home .map-sebastian{left:1%;bottom:2%;width:27%;gap:3px}
+ #home .map-speech{font-size:8px;padding:5px 6px}
+}
+
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>
-<section id="home" class="hidden"><div class="home-world"><div class="screen-title">Kies een plek op de zeebodem</div><div class="map-guide"><span class="sebastian">🦈</span><span>Hoi! Ik ben Sebastian. Waar gaan we oefenen?</span></div><div class="grid" id="modes"></div></div></section><section id="categories" class="hidden"><div class="panel"><div class="row"><button class="btn" id="backModes">← Terug</button><div class="screen-title" id="categoryHeading">Kies een woordwereld</div></div><div class="catgrid" id="cats"></div></div></section>
+<section id="home" class="hidden">
+<div class="home-world">
+  <h2 class="map-heading">Kies een plek op de zeebodem</h2>
+  <div class="map-sebastian">
+    <img src="images/sebastian/sebastian-begroeting.png" alt="Sebastian de hamerhaai">
+    <div class="map-speech">Hoi! Ik ben Sebastian. Waar gaan we oefenen?</div>
+  </div>
+  <div class="map-locations" aria-label="Kies een oefenplek">
+    <button class="map-place active library" data-mode="read"><span>Boekenrots</span><small>Lees maar!</small></button>
+    <button class="map-place active crystals" data-mode="flash"><span>Lichtgevende grot</span><small>Flits maar!</small></button>
+    <button class="map-place active shipwreck" data-mode="spell"><span>Schelpenplek</span><small>Spel maar!</small></button>
+    <button class="map-place active arch" data-mode="match"><span>Koraalpoort</span><small>Sleep maar!</small></button>
+    <button class="map-place future ruins" disabled><span>Oude ruïnes</span><small>Binnenkort</small></button>
+    <button class="map-place future treasure" disabled><span>Schatkamer</span><small>Binnenkort</small></button>
+    <button class="map-place future grotto" disabled><span>Geheime grot</span><small>Binnenkort</small></button>
+    <button class="map-place future coral" disabled><span>Koraaltuin</span><small>Binnenkort</small></button>
+  </div>
+</div></section><section id="categories" class="hidden"><div class="panel"><div class="row"><button class="btn" id="backModes">← Terug</button><div class="screen-title" id="categoryHeading">Kies een woordwereld</div></div><div class="catgrid" id="cats"></div></div></section>
 <section id="practice" class="panel practice hidden"><div class="row"><button class="btn kidbtn" id="back">← Terug</button><div style="text-align:right"><b id="catname"></b><div class="muted" id="modename"></div></div></div><div class="row muted"><span id="count">1 / 12</span><span id="time"></span></div><div class="progress"><div id="bar" style="width:8%"></div></div><div class="wordbox"><div class="muted" id="instruction">Lees het woord hardop</div><div class="word" id="word">vis</div><div class="muted" id="hint">Probeer het eerst zelf.</div></div><div class="animal-badge" id="practiceAnimal">🐠</div>
 <div id="readControls" class="row"><button class="btn" id="listen">🔊 Luister</button><button class="btn primary" id="nextRead">Volgende →</button></div>
 <div id="flashControls" class="hidden"><div class="row"><button class="btn" id="listenFlash">🔊 Luister</button><button class="btn" id="showAgain">👀 Nog eens</button><button class="btn primary" id="nextFlash">Verder →</button></div><div class="muted" id="flashStatus" style="text-align:center;margin-top:8px"></div></div>
@@ -102,7 +175,7 @@ header{background:#ffffffc9;border:2px solid #b5efff;border-radius:18px;padding:
 <h3 style="font-size:15px">Over deze app</h3><p class="muted">Sebastian’s Leesavontuur biedt kinderen extra oefening met woorden in vier oefenvormen: lezen, flitsen, spellen en woorden koppelen aan afbeeldingen. Kinderen oefenen op hun eigen tempo.</p>
 <h3 style="font-size:15px">Levels en AVI</h3><p class="muted">De woordpakketten zijn opgebouwd rond AVI Start, M3 en E3. Dit is een samengestelde oefenopbouw voor deze app en geen officiële AVI-toetsnorm of gevalideerde AVI-leerlijn. De app vervangt geen leesonderwijs, AVI-toetsing of professionele beoordeling.</p>
 <h3 style="font-size:15px">Woordkeuze en opslag</h3><div class="note">Levels 1–3 staan standaard aan. Levels 4–5 kun je hieronder inschakelen. Levels 6–8 zijn zichtbaar maar nog niet beschikbaar. Alleen instellingen en eigen woordgroepen worden lokaal op dit apparaat bewaard. Er worden geen leesresultaten of oefenvoortgang opgeslagen.</div><div id="modeSettings"></div><h3 style="font-size:15px">Woordcategorieën</h3><div id="catSettings"></div><h3 style="font-size:15px">Eigen woordgroepen</h3><div id="customGroups"></div><div class="custom-editor"><input id="groupName" placeholder="Naam van de woordgroep"><textarea id="groupWords" rows="4" placeholder="Typ of plak woorden, één per regel"></textarea><button class="btn" id="addGroup">+ Woordgroep toevoegen</button></div><div class="settings-extra"><b>Geluid en beweging</b><div class="setting"><label for="soundOn">Geluidseffecten</label><input id="soundOn" type="checkbox" checked></div><div class="setting"><label for="musicOn">Welkomstmuziek</label><input id="musicOn" type="checkbox" checked></div><div class="setting"><label for="animationsOn">Animaties</label><input id="animationsOn" type="checkbox" checked></div></div><div class="setting"><label for="flashTime">Flitstijd</label><select id="flashTime"><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div><div class="note" id="summary"></div><button class="btn primary" id="save" style="width:100%;margin-top:12px">Instellingen bewaren</button></section>
-<div class="footer">Sebastian’s Leesavontuur · versie 7</div><img class="sea-footer" src="underwater-footer.jpg" alt="Kleurrijke onderwaterwereld met zeedieren"><div id="activityOverlay" class="activity-overlay"><div class="animal" id="activityAnimal">🐠</div></div></main>
+<div class="footer">Sebastian’s Leesavontuur · versie 8</div><div id="activityOverlay" class="activity-overlay"><div class="animal" id="activityAnimal">🐠</div></div></main>
 <script>
 const CATS=[{"name":"Level 1","title":"AVI Start – korte klankzuivere woorden","emoji":"🐠","words":["aan","aap","al","as","baan","baas","bak","bal","beek","been","bek","bel","ben","bok","bol","boog","boom","boos","boot","bos","bot","daar","dag","dak","dal","dam","dan","das","dat","de","deeg","deel","dek","dik","dit","dom","dook","doop","doos","dun","dus","en","er","ga","gaan","gas","gat","geel","geen","gek","gil","goot","haak","haal","haan","haar","haas","hak","hal","hap","heg","hek","hok","hol","hoog","hoop","hop","ik","in","is","jaar","jas","kaal","kaas","kam","kan","kar","kat","keek","keel","kees","ken","kin","kip","kok","kom","kon","kook","kool","koop","koos","kus","laan","lam","las","lees","leg","les","lig","lol","loon","loop","los","maag","maak","maan","maat","mam","man","mat","me","mee","meel","mis","mol","mos","mot","mug","mus","naam","nat","neem","nek","nog","noot","oog","ook","oom","paal","pak","pan","pap","pas","pen","poos","poot","pop","pot","put","raak","ren","rit","rok","rol","rook","room","roos","rot","rug","som","taak","taal","tak","teen","tel","tik","tip","ton","toon","top","tot","vaag","vaak","vak","val","vos","was","week","wees","weet","weg","wil","wit","wol","won","woon","zaak","zaal","zag","zak","zal","zat","zit","zoon","pet","lak","sap","lap","sop","mop","zus","rem","mep"]},{"name":"Level 2","title":"M3 – eenvoudige klankcombinaties","emoji":"🦀","words":["bijt","boek","boer","bui","buik","buis","buit","diep","dijk","doek","doel","doen","doet","duim","hoek","huil","huis","ijs","jij","kies","kijk","lijn","moe","moet","muis","niet","noem","piet","pijl","pijn","pijp","poes","riem","riep","rij","rijk","rijp","roem","roep","ruik","ruil","ruim","soep","tien","toen","tuin","vies","vuil","wieg","wij","wijn","wijs","zie","ziek","zien","zijn","zoek","zoen","zoet","aal","aar","af","bah","ban","bar","bas","beet","bier","big","boef","boel","boem","bus","dief","dier","dof","dol","doof","duif","een","eis","es","fan","feit","fel","gaf","geef","geit","gif","haat","heel","heen","heet","heil","hel","hem","hen","her","het","hief","hier","hoef","hof","hun","hut","huur","iel","iep","juf","juk","kiel","koel","koen","kop","kuil","kun","laag","laat","lag","leef","leeg","leek","lief","liep","liet","lof","log","loog","lot","maal","maar","maas","mag","meen","meet","men","mes","met","mier","mij","min","muil","muur","naar","nam","neef","neer","nel","net","nut","oer","of","om","op","os","paar","peet","per","puur","raaf","raam","raar","ram","rat","rees","rein","reis","riet","roer","ros","ruk","set","tal","uil","van","vat","veel","vel","ver","vet","viel","vier","vin","vis","voel","voer","voet","vol","wal","war","wat","wel","wet","wier","zeg","zes","zet","ziel","ziet","zij","zul","zuur","ma","nee","la","fee","zee","zo","te","ei","mei","wou","beul","heus","keus","leuk","neus","reus","peen","roe","test","koe","pad","sint","vast","zaag"]},{"name":"Level 3","title":"M3 – bijzondere klankgroepen en spellingpatronen","emoji":"🐢","words":["bakt","bijl","bouw","buigt","dauw","duikt","fijn","fout","gauw","geeft","heeft","hout","ijl","jou","jouw","kent","kijkt","kou","ligt","lijf","lijk","loopt","lui","maakt","mijl","mijn","mouw","nauw","nou","paus","ree","roept","rouw","ruikt","touw","vaart","valt","wast","wee","wei","wijk","wilt","zegt","zei","zou","zout","beer","eer","heer","keer","leer","meer","peer","teer","veer","weer","zeer","door","hoor","koor","oor","voor","deur","geur","beurt","mast","past","mist","lust","post","punt","rest","vlot","veld","vind","want","zand","zwak","tand","uur","wie"]},{"name":"Level 4","title":"E3 – clusters en complexere eenlettergrepige woorden","emoji":"🦑","words":["acht","baard","balk","band","bang","beeld","beest","bind","blank","blijkt","blikt","blind","blokken","blond","bommen","bond","bont","boon","boord","bord","borg","borst","bracht","brand","breekt","breng","bron","buur","buurt","daalt","dacht","damp","dank","dans","deelt","dicht","die","dient","ding","dirk","dolk","dorp","dorst","drift","drijft","drong","drop","drukt","durf","duur","duurt","dwars","dwerg","dwong","echt","eed","erf","erg","feest","fiets","film","flesje","fort","gang","gans","gast","geert","geld","gids","gilt","ging","glans","glas","golf","gooi","grens","grijpt","grof","grond","guur","haai","haalt","haard","haast","hakken","half","hals","hand","hang","hans","hard","harp","hart","heb","hecht","heden","hei","heks","held","helft","helm","help","hemd","hert","heup","hield","hielp","hing","hoe","hoeft","hond","hoofd","hoogst","hoopt","hoorn","hoort","huilt","hulp","jacht","jong","juist","jurk","kaart","kalf","kalm","kamp","kans","kant","kast","katten","keert","kerk","kern","kiest","kieuw","kind","kist","klank","klant","klimt","klink","klont","klopt","knecht","knikt","kocht","koets","kogel","komt","koopt","koord","kort","kost","kracht","krans","krant","kreeft","kring","kris","kroost","kruipt","krul","kuif","kunt","kust","kwart","laatst","lach","lacht","lamp","land","lang","lans","lappen","last","lauw","leden","leeft","leert","leest","leuks","licht","lift","lijft","lijst","lint","list","loei","long","lood","lucht","luie","luik","lukt","lus","maand","maart","macht","mand","mank","markt","meent","melk","meng","mens","merk","messen","minst","mocht","moest","mond","must","muts","naai","naald","naast","nacht","nagel","neemt","nest","nicht","niets","nieuw","niks","noemt","nooit","nummer","paard","pakt","park","part","pauw","pech","pels","pink","plaats","plant","plein","plicht","plots","plus","pond","poort","pracht","prins","print","puin","raakt","ramp","rand","rang","recht","rechts","reeks","rent","richt","rijm","rijst","ring","romp","rond","rots","rover","rozen","ruit","rund","rups","rust","saus","schelp","scherp","schijf","schijnt","schild","schok","school","schuld","sein","sla","slaapt","slang","slecht","smal","smart","smolt","snapt","soms","specht","speelt","speld","spoor","sport","spul","staart","stand","stapt","start","steeds","steekt","stelt","sterk","stierf","stoep","stokken","stond","stopt","storm","stort","straat","straf","taart","teil","tilt","tips","toch","tocht","toets","tong","toont","tracht","treft","trekt","troep","troost","trots","trui","twaalf","twist","vacht","valk","vals","vang","vent","verf","vijf","ving","vlees","vlucht","vocht","voelt","voert","volg","volk","vond","voort","vork","vorst","vouw","vreemd","vriend","vrouwtje","vrucht","vuist","waard","wacht","wand","wang","wapen","warm","welk","wens","werd","werk","werp","wiek","wierp","wijst","wild","wind","winkel","wint","wist","wolf","wolk","wond","woont","woord","word","worm","woud","wrong","zacht","zakt","zalf","zang","zeem","zeil","zeis","zelf","zelfs","zeur","zich","zicht","zing","zocht","zoekt","zolder","zond","zong","zorg","zucht","zuid","zulk","zwaard","zwart","zweet","zwerm","zwierf"]},{"name":"Level 5","title":"E3 – langere woorden en complexere woordstructuren","emoji":"🐬","words":["aardgas","akker","bedrag","bedroefd","begin","begrip","beker","belang","belt","benauwd","bent","berg","bericht","beroemd","best","beuk","bezoek","bloem","boompje","bootje","broertje","bussen","dapper","deels","deugd","deuk","donker","doorn","dorpje","droomt","duits","eentje","eerbied","eeuw","eigen","eik","elk","fraai","frans","gebaar","gebed","gebruik","geest","geeuw","gelijk","gesprek","gevolg","geweld","glimlach","goeds","graden","grieks","groei","groots","huisvrouw","iets","invloed","jassen","jeugd","jeuk","kanon","kelder","klacht","lijkt","mantel","mark","meest","meeuw","meisje","modder","mooi","noodzaak","opstand","plekje","regel","ridder","samen","scheelt","schepen","schilder","schold","schoonheid","schort","schuift","sleutel","slimme","snelheid","soort","spaans","stemmen","steun","stille","streken","streng","stuurt","taken","tegen","tellen","telt","tent","term","toestand","toorn","triest","trouwt","verbaasd","verband","verdriet","vergeefs","verliefd","verstand","vertrek","vijand","vliegveld","voetstap","waarheid","waart","weerstand","wegen","werkplaats","wijze","woede","woest","zakje","ziekte","zinnen","zoete","zoiets"]},{"name":"Level 6","title":"Binnenkort beschikbaar","emoji":"🦈","words":[],"locked":true},{"name":"Level 7","title":"Binnenkort beschikbaar","emoji":"🐋","words":[],"locked":true},{"name":"Level 8","title":"Binnenkort beschikbaar","emoji":"🐙","words":[],"locked":true}];
 const MODES=[ ["read","📖","Lees maar!","Bekijk en lees woorden"],["flash","✨","Flits maar!","Onthoud het woord"],["spell","🔤","Spel maar!","Hoor en typ het woord"],["match","🧩","Sleep maar!","Sleep het woord naar het plaatje"] ];
@@ -112,7 +185,21 @@ let settings;try{settings={...defaults,...JSON.parse(localStorage.getItem("laSet
 localStorage.removeItem("laProgress"); if(!localStorage.getItem("laV7Migrated")){settings.cats=[true,true,true,false,false,false,false,false];localStorage.setItem("laV7Migrated","1")}else{settings.cats=Array.from({length:8},(_,i)=>i<3?true:(i<5?!!settings.cats?.[i]:false))}settings.cats=Array.from({length:8},(_,i)=>i<3?true:(i<5?!!settings.cats[i]:false)); let mode="read",ci=0,words=[],idx=0,timer=null,autoTimer=null,wrongAttempts=0,answered=false,matchSolved=0;
 const $=x=>document.getElementById(x);function page(id){["welcome","home","categories","practice","parents"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
 function say(w){if(!("speechSynthesis"in window))return;speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(w);u.lang="nl-NL";u.rate=.78;let v=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith("nl"));if(v)u.voice=v;speechSynthesis.speak(u)}
-function home(){$("modes").innerHTML="";MODES.filter(m=>settings.modes[m[0]]).forEach(m=>{let b=document.createElement("button");b.className="mode";b.dataset.mode=m[0];b.innerHTML=`<span class="em">${m[1]}</span><b>${m[2]}</b><small>${m[3]}</small>`;b.onclick=()=>{mode=m[0];$("categoryHeading").textContent=m[2]+" · kies een woordwereld";categories();page("categories")};$("modes").append(b)});$("home").classList.add("home-world");}
+function home(){
+  document.querySelectorAll(".map-place[data-mode]").forEach(b=>{
+    const m=MODES.find(x=>x[0]===b.dataset.mode);
+    const enabled=!!settings.modes[b.dataset.mode];
+    b.disabled=!enabled;
+    b.classList.toggle("unavailable",!enabled);
+    b.onclick=()=>{
+      if(!enabled)return;
+      mode=b.dataset.mode;
+      $("categoryHeading").textContent=m[2]+" · kies een woordwereld";
+      categories();page("categories");
+    };
+  });
+  $("home").classList.add("home-world");
+}
 function categories(){$("cats").innerHTML="";CATS.forEach((c,i)=>{if(c.locked){addCatCard(c,()=>{},true);return}if(!settings.cats[i])return;addCatCard(c,()=>begin(i))});if(mode!=="spell"&&mode!=="match")addCatCard(SOUND_CAT,()=>beginSpecial(SOUND_CAT));settings.customGroups.forEach((g,i)=>{if(g.words&&g.words.length)addCatCard({name:g.name,title:g.words.length+" eigen woorden",emoji:"⭐"},()=>beginSpecial(g,"custom",i))})}
 function addCatCard(c,fn,locked=false){let b=document.createElement("button");b.className="cat"+(locked?" locked":"");b.disabled=locked;b.innerHTML=`<span class="avatar">${c.emoji}</span><span><b>${c.name}</b><small>${c.title}</small></span>`;b.onclick=fn;$("cats").append(b)}
 function beginSpecial(c,type="sound",customIndex=-1){ci=-1;activeSpecial={emoji:c.emoji||"⭐",title:c.title||"Eigen woorden",...c,type,customIndex};startWords(c.words)}

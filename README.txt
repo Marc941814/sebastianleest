@@ -27,3 +27,6 @@ Test de overzichtsomgeving op desktop en tablet, controleer de vier actieve rout
 
 Versie 8 – fase 1 (achtergrond overzichtsomgeving)
 De goedgekeurde achtergrond voor de overzichtsomgeving staat in images/overview-background.png en wordt lokaal gecachet voor offline gebruik. De bestaande kaartindeling en navigatie zijn in deze stap nog niet opnieuw vormgegeven.
+
+Versie 8 – overzichtsomgeving update
+De overzichtsomgeving gebruikt de goedgekeurde doorlopende achtergrond. Acht locatieknoppen zijn als interactieve elementen over het landschap geplaatst; vier openen de bestaande oefeningen en vier zijn nog niet actief. Sebastian verschijnt één keer met de goedgekeurde begroetingspose. De onderste footerbanner is verwijderd. De oefenomgevingen zelf zijn nog niet opnieuw vormgegeven.
