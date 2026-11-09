@@ -35,3 +35,6 @@ Onderhoud: underwater-footer.jpg is verwijderd; deze afbeelding wordt niet meer 
 
 Versie 8 – correctie Sebastian-assets
 Alle zes goedgekeurde Sebastian-poses zijn vervangen door de gecontroleerde PNG-uitsneden met transparante achtergrond. De begroetingspose wordt op de overzichtsomgeving gebruikt; de overige vijf zijn opgenomen voor later gebruik als feedback-buddy. De bestaande afgesproken grootte en positie van Sebastian zijn behouden. Service-worker-cache verhoogd naar v10 om de gecorrigeerde bestanden opnieuw op te halen.
+
+
+Versie 9 – geïllustreerde overzichtsomgeving. De titel, vier oefenbordjes en tekstballon zijn losse transparante PNG-bestanden. De vier oefenknoppen blijven afzonderlijk aanklikbaar. Alle zes goedgekeurde Sebastian-poses blijven lokaal opgenomen. De nieuwe illustraties zijn opgenomen in de offline-cache.

@@ -347,21 +347,37 @@ body:has(#home:not(.hidden)) header{
  background:transparent!important;background-color:transparent!important
 }
 
+
+/* v9: illustratieve vormgeving voor de overzichtsomgeving */
+#home .map-heading{position:absolute!important;z-index:8!important;top:1.2%!important;left:50%!important;transform:translateX(-50%)!important;width:min(36vw,580px)!important;margin:0!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+#home .map-heading img{display:block;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 5px 6px #002d4d88)}
+#home .map-place{position:absolute!important;width:15.5%!important;min-height:0!important;height:auto!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;clip-path:none!important;overflow:visible!important;display:block!important;transform:translate(-50%,-50%)!important}
+#home .map-place:before{display:none!important;content:none!important}
+#home .map-place img{display:block;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 4px 4px #003b6260)}
+#home .map-place.active:hover{filter:brightness(1.08);transform:translate(-50%,-53%)!important}
+#home .map-place.active:focus-visible{outline:3px solid #ffe06b;outline-offset:4px;border-radius:12px}
+#home .map-place.unavailable{opacity:.45;filter:grayscale(.8)}
+#home .map-sebastian{position:absolute!important;z-index:7!important;left:1.3%!important;bottom:2.2%!important;width:29%!important;display:flex!important;align-items:flex-end!important;gap:0!important}
+#home .map-sebastian img:not(.map-speech){width:62%!important;max-height:none!important;height:auto!important;object-fit:contain!important}
+#home .map-sebastian .map-speech{display:block!important;width:46%!important;max-width:none!important;height:auto!important;align-self:flex-end!important;margin:0 0 3% -2%!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;object-fit:contain!important;filter:drop-shadow(0 3px 4px #003b6260)}
+@media (orientation:landscape) and (max-height:650px){#home .map-heading{width:min(33vw,520px)!important;top:.5%!important}#home .map-place{width:14%!important}#home .map-sebastian{width:25%!important;bottom:1%!important}}
+@media (max-width:700px) and (orientation:portrait){#home .map-heading{width:60vw!important}#home .map-place{width:18%!important}#home .map-sebastian{width:36%!important}}
+
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>
 <section id="home" class="hidden">
 <div class="home-world">
-  <h2 class="map-heading"><span class="title-book">📖</span><span>Sebastian’s Leesavontuur</span></h2>
+  <h2 class="map-heading"><img src="images/overview-ui/title.png" alt="Sebastian’s Leesavontuur"></h2>
   <div class="map-sebastian">
     <img src="images/sebastian/sebastian-begroeting.png" alt="Sebastian de hamerhaai">
-    <div class="map-speech">Hoi! Ik ben Sebastian. Waar gaan we oefenen?</div>
+    <img class="map-speech" src="images/overview-ui/speech-bubble.png" alt="Hallo! Ik ben Sebastian. Wat leuk dat je hier bent.">
   </div>
   <div class="map-locations" aria-label="Kies een oefenplek">
-    <button class="map-place active library" data-mode="read"><small>Lees maar!</small></button>
-    <button class="map-place active crystals" data-mode="flash"><small>Flits maar!</small></button>
-    <button class="map-place active shipwreck" data-mode="spell"><small>Spel maar!</small></button>
-    <button class="map-place active arch" data-mode="match"><small>Sleep maar!</small></button>
+    <button class="map-place active library" data-mode="read" aria-label="Lees maar!"><img src="images/overview-ui/read.png" alt="Lees maar!"></button>
+    <button class="map-place active crystals" data-mode="flash" aria-label="Flits maar!"><img src="images/overview-ui/flash.png" alt="Flits maar!"></button>
+    <button class="map-place active shipwreck" data-mode="spell" aria-label="Spel maar!"><img src="images/overview-ui/spell-audio.png" alt="Spel maar! Auditieve oefening"></button>
+    <button class="map-place active arch" data-mode="match" aria-label="Sleep maar!"><img src="images/overview-ui/sleep.png" alt="Sleep maar!"></button>
     <button class="map-place future ruins" disabled><small>Binnenkort</small></button>
     <button class="map-place future treasure" disabled><small>Binnenkort</small></button>
     <button class="map-place future grotto" disabled><small>Binnenkort</small></button>
