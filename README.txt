@@ -32,3 +32,6 @@ Versie 8 – overzichtsomgeving update
 De overzichtsomgeving gebruikt de goedgekeurde doorlopende achtergrond. Acht locatieknoppen zijn als interactieve elementen over het landschap geplaatst; vier openen de bestaande oefeningen en vier zijn nog niet actief. Sebastian verschijnt één keer met de goedgekeurde begroetingspose. De onderste footerbanner is verwijderd. De oefenomgevingen zelf zijn nog niet opnieuw vormgegeven.
 
 Onderhoud: underwater-footer.jpg is verwijderd; deze afbeelding wordt niet meer gebruikt door de app en staat niet meer in de offlinecache.
+
+Versie 8 – correctie Sebastian-assets
+Alle zes goedgekeurde Sebastian-poses zijn vervangen door de gecontroleerde PNG-uitsneden met transparante achtergrond. De begroetingspose wordt op de overzichtsomgeving gebruikt; de overige vijf zijn opgenomen voor later gebruik als feedback-buddy. De bestaande afgesproken grootte en positie van Sebastian zijn behouden. Service-worker-cache verhoogd naar v10 om de gecorrigeerde bestanden opnieuw op te halen.
