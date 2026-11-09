@@ -23,3 +23,7 @@ Plaats alle bestanden en mappen uit deze bundel in de hoofdmap van de bestaande 
 
 CONTROLE
 Test de overzichtsomgeving op desktop en tablet, controleer de vier actieve routes, de vier niet-actieve plekken en offline laden. De bestaande oefeningen, woordenbank en instellingen zijn behouden.
+
+
+Versie 8 – fase 1 (achtergrond overzichtsomgeving)
+De goedgekeurde achtergrond voor de overzichtsomgeving staat in images/overview-background.png en wordt lokaal gecachet voor offline gebruik. De bestaande kaartindeling en navigatie zijn in deze stap nog niet opnieuw vormgegeven.
