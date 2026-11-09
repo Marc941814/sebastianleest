@@ -222,6 +222,36 @@ body:has(#home:not(.hidden)) #home .home-world:before{display:none!important;con
  #home .map-place{width:17%;min-height:6.5%}
 }
 
+
+/* Laatste afwerking overzichtsomgeving: balk verwijderen, ouderknop in kaart, Sebastian */
+body:has(#home:not(.hidden)) header{
+  position:fixed;top:10px;right:14px;z-index:50;
+  display:block;width:auto;margin:0;padding:0;
+  background:transparent!important;border:0!important;box-shadow:none!important;
+  backdrop-filter:none!important
+}
+body:has(#home:not(.hidden)) header .brand{display:none!important}
+body:has(#home:not(.hidden)) header #parent{
+  display:inline-flex;position:relative;top:0;right:0;
+  min-height:36px;padding:7px 13px;border-radius:12px;
+  background:#ffffffed;color:#123c58;
+  border:2px solid #b5efff;box-shadow:0 3px 8px #003b6260;
+  font-size:13px
+}
+body:has(#home:not(.hidden)) #home .home-world:before{
+  display:none!important;content:none!important;padding:0!important;margin:0!important
+}
+body:has(#home:not(.hidden)) #home .home-world{
+  padding-top:0!important;margin-top:0!important
+}
+#home .map-sebastian{
+  bottom:calc(2.5% + 5cm)!important;
+  transform:scale(1.1);transform-origin:bottom left
+}
+@media (orientation:landscape) and (max-height:650px){
+ #home .map-sebastian{bottom:calc(1% + 5cm)!important;transform:scale(1.1);transform-origin:bottom left}
+}
+
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>
