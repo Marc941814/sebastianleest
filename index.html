@@ -364,32 +364,67 @@ body:has(#home:not(.hidden)) header{
 @media (max-width:700px) and (orientation:portrait){#home .map-heading{width:60vw!important}#home .map-place{width:18%!important}#home .map-sebastian{width:36%!important}}
 
 
-/* v10.2: definitieve, geïsoleerde plaatsing van Sebastian en ballon */
+
+/* v10.3: één eenduidige compositie voor Sebastian met tekstballon eronder */
 #home .map-sebastian{
- position:absolute!important; z-index:9!important; left:1.2%!important; top:43%!important;
- bottom:auto!important; width:22%!important; height:55%!important; display:block!important;
+  position:absolute!important;
+  z-index:9!important;
+  left:1.2%!important;
+  bottom:2.2%!important;
+  top:auto!important;
+  width:clamp(250px,22vw,390px)!important;
+  height:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:0!important;
+  transform:none!important;
 }
 #home .map-sebastian img:first-child{
- position:absolute!important; left:0!important; top:0!important; width:72%!important;
- height:auto!important; max-height:none!important; object-fit:contain!important;
- filter:drop-shadow(0 5px 5px #003b6260)!important;
+  position:relative!important;
+  display:block!important;
+  width:68%!important;
+  height:auto!important;
+  max-height:36vh!important;
+  object-fit:contain!important;
+  object-position:left bottom!important;
+  margin:0!important;
+  filter:drop-shadow(0 5px 5px #003b6260)!important;
 }
 #home .map-sebastian img.map-speech{
- position:absolute!important; left:15%!important; top:58%!important; width:112%!important;
- height:auto!important; max-width:none!important; display:block!important; margin:0!important;
- padding:0!important; border:0!important; border-radius:0!important; background:transparent!important;
- box-shadow:none!important; object-fit:contain!important; filter:drop-shadow(0 4px 5px #003b6260)!important;
+  position:relative!important;
+  display:block!important;
+  left:16%!important;
+  top:auto!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:28vh!important;
+  object-fit:contain!important;
+  margin:-1.2% 0 0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 4px 5px #003b6260)!important;
 }
 @media (orientation:landscape) and (max-height:650px){
- #home .map-sebastian{left:1%!important;top:40%!important;width:19%!important;height:58%!important}
- #home .map-sebastian img:first-child{width:68%!important}
- #home .map-sebastian img.map-speech{top:56%!important;width:112%!important}
+  #home .map-sebastian{width:clamp(210px,19vw,310px)!important;bottom:1.5%!important}
+  #home .map-sebastian img:first-child{max-height:34vh!important}
+  #home .map-sebastian img.map-speech{max-height:25vh!important}
 }
 @media (max-width:700px) and (orientation:portrait){
- #home .map-sebastian{left:1%!important;top:47%!important;width:34%!important;height:51%!important}
- #home .map-sebastian img:first-child{width:72%!important}
- #home .map-sebastian img.map-speech{left:8%!important;top:57%!important;width:115%!important}
+  #home .map-sebastian{
+    left:1%!important;bottom:2%!important;
+    width:clamp(205px,47vw,300px)!important;
+  }
+  #home .map-sebastian img:first-child{width:66%!important;max-height:31vh!important}
+  #home .map-sebastian img.map-speech{
+    left:13%!important;width:100%!important;max-height:24vh!important;
+  }
 }
+
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>

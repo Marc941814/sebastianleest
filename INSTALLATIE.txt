@@ -1,0 +1,20 @@
+SEBASTIAN'S LEESAVONTUUR – VERSIE 10.3
+
+Deze correctie is gebaseerd op de door jou aangeleverde index.html en sw.js.
+
+Upload naar de hoofdmap van de GitHub-repository:
+- index.html          (overschrijven)
+- sw.js               (overschrijven)
+- images/overview-ui/speech-bubble-v10.svg
+  (mapstructuur behouden; bestand toevoegen/overschrijven)
+
+De SVG staat op exact hetzelfde pad als waar index.html naar verwijst.
+De service-worker-cache is verhoogd naar leesavontuur-v10-3.
+
+Na commit:
+1. Wacht tot GitHub Pages klaar is met publiceren.
+2. Open de app opnieuw.
+3. Vernieuw zo nodig met Ctrl+F5.
+4. Als de oude PWA-versie blijft staan: sluit de app/tab volledig en open opnieuw.
+
+Let op: de bestaande achtergrond, titel, oefenborden, locaties en links zijn niet aangepast.
