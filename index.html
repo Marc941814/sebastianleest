@@ -364,29 +364,31 @@ body:has(#home:not(.hidden)) header{
 @media (max-width:700px) and (orientation:portrait){#home .map-heading{width:60vw!important}#home .map-place{width:18%!important}#home .map-sebastian{width:36%!important}}
 
 
-/* v10: Sebastian hoger, tekstballon eronder met punt richting zijn bek */
+/* v10.2: definitieve, geïsoleerde plaatsing van Sebastian en ballon */
 #home .map-sebastian{
-  position:absolute!important;z-index:7!important;left:1.5%!important;bottom:2.5%!important;
-  width:22%!important;display:block!important;transform:none!important
+ position:absolute!important; z-index:9!important; left:1.2%!important; top:43%!important;
+ bottom:auto!important; width:22%!important; height:55%!important; display:block!important;
 }
-#home .map-sebastian img:not(.map-speech){
-  display:block!important;width:82%!important;height:auto!important;max-height:none!important;
-  object-fit:contain!important;filter:drop-shadow(0 5px 5px #003b6260)
+#home .map-sebastian img:first-child{
+ position:absolute!important; left:0!important; top:0!important; width:72%!important;
+ height:auto!important; max-height:none!important; object-fit:contain!important;
+ filter:drop-shadow(0 5px 5px #003b6260)!important;
 }
-#home .map-sebastian .map-speech{
-  position:absolute!important;display:block!important;left:15%!important;top:72%!important;
-  width:128%!important;height:auto!important;max-width:none!important;margin:0!important;
-  padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;
-  box-shadow:none!important;object-fit:contain!important;filter:drop-shadow(0 4px 4px #003b6260)
+#home .map-sebastian img.map-speech{
+ position:absolute!important; left:15%!important; top:58%!important; width:112%!important;
+ height:auto!important; max-width:none!important; display:block!important; margin:0!important;
+ padding:0!important; border:0!important; border-radius:0!important; background:transparent!important;
+ box-shadow:none!important; object-fit:contain!important; filter:drop-shadow(0 4px 5px #003b6260)!important;
 }
 @media (orientation:landscape) and (max-height:650px){
- #home .map-sebastian{width:19%!important;bottom:2%!important}
- #home .map-sebastian .map-speech{width:125%!important;top:72%!important}
+ #home .map-sebastian{left:1%!important;top:40%!important;width:19%!important;height:58%!important}
+ #home .map-sebastian img:first-child{width:68%!important}
+ #home .map-sebastian img.map-speech{top:56%!important;width:112%!important}
 }
 @media (max-width:700px) and (orientation:portrait){
- #home .map-sebastian{width:34%!important;left:1%!important;bottom:2%!important}
- #home .map-sebastian img:not(.map-speech){width:80%!important}
- #home .map-sebastian .map-speech{left:10%!important;top:72%!important;width:130%!important}
+ #home .map-sebastian{left:1%!important;top:47%!important;width:34%!important;height:51%!important}
+ #home .map-sebastian img:first-child{width:72%!important}
+ #home .map-sebastian img.map-speech{left:8%!important;top:57%!important;width:115%!important}
 }
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
@@ -396,7 +398,7 @@ body:has(#home:not(.hidden)) header{
   <h2 class="map-heading"><img src="images/overview-ui/title.png" alt="Sebastian’s Leesavontuur"></h2>
   <div class="map-sebastian">
     <img src="images/sebastian/sebastian-begroeting.png" alt="Sebastian de hamerhaai">
-    <img class="map-speech" src="images/overview-ui/speech-bubble.png" alt="Hallo! Ik ben Sebastian. Wat leuk dat je hier bent.">
+    <img class="map-speech" src="images/overview-ui/speech-bubble-v10.svg" alt="Hallo! Ik ben Sebastian. Wat leuk dat je hier bent.">
   </div>
   <div class="map-locations" aria-label="Kies een oefenplek">
     <button class="map-place active library" data-mode="read" aria-label="Lees maar!"><img src="images/overview-ui/read.png" alt="Lees maar!"></button>
