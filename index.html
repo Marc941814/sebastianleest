@@ -363,6 +363,31 @@ body:has(#home:not(.hidden)) header{
 @media (orientation:landscape) and (max-height:650px){#home .map-heading{width:min(33vw,520px)!important;top:.5%!important}#home .map-place{width:14%!important}#home .map-sebastian{width:25%!important;bottom:1%!important}}
 @media (max-width:700px) and (orientation:portrait){#home .map-heading{width:60vw!important}#home .map-place{width:18%!important}#home .map-sebastian{width:36%!important}}
 
+
+/* v10: Sebastian hoger, tekstballon eronder met punt richting zijn bek */
+#home .map-sebastian{
+  position:absolute!important;z-index:7!important;left:1.5%!important;bottom:2.5%!important;
+  width:22%!important;display:block!important;transform:none!important
+}
+#home .map-sebastian img:not(.map-speech){
+  display:block!important;width:82%!important;height:auto!important;max-height:none!important;
+  object-fit:contain!important;filter:drop-shadow(0 5px 5px #003b6260)
+}
+#home .map-sebastian .map-speech{
+  position:absolute!important;display:block!important;left:15%!important;top:72%!important;
+  width:128%!important;height:auto!important;max-width:none!important;margin:0!important;
+  padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;object-fit:contain!important;filter:drop-shadow(0 4px 4px #003b6260)
+}
+@media (orientation:landscape) and (max-height:650px){
+ #home .map-sebastian{width:19%!important;bottom:2%!important}
+ #home .map-sebastian .map-speech{width:125%!important;top:72%!important}
+}
+@media (max-width:700px) and (orientation:portrait){
+ #home .map-sebastian{width:34%!important;left:1%!important;bottom:2%!important}
+ #home .map-sebastian img:not(.map-speech){width:80%!important}
+ #home .map-sebastian .map-speech{left:10%!important;top:72%!important;width:130%!important}
+}
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>
