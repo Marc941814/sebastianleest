@@ -145,6 +145,83 @@ header{background:#ffffffc9;border:2px solid #b5efff;border-radius:18px;padding:
  #home .map-speech{font-size:8px;padding:5px 6px}
 }
 
+
+/* v8 fase 1 vervolg: schermbrede kaart, houten naambordjes en grotere Sebastian */
+body:has(#home:not(.hidden)){background:#075b91}
+body:has(#home:not(.hidden)) .shell{
+  width:100%;max-width:none;min-height:100svh;height:100svh;
+  margin:0;padding:0;gap:0;display:block;overflow:hidden
+}
+body:has(#home:not(.hidden)) header{
+  position:absolute;z-index:20;top:8px;right:12px;
+  width:auto;padding:0;background:transparent;border:0;box-shadow:none
+}
+body:has(#home:not(.hidden)) header .brand{display:none}
+body:has(#home:not(.hidden)) header #parent{
+  min-height:38px;padding:7px 12px;border-radius:12px;
+  box-shadow:0 2px 7px #003b6255;font-size:13px
+}
+body:has(#home:not(.hidden)) #home{display:block!important;width:100%;height:100svh;margin:0;padding:0}
+body:has(#home:not(.hidden)) #home .home-world{
+  width:100vw;height:100svh;min-height:0;aspect-ratio:auto;
+  border:0;border-radius:0;padding:0;box-shadow:none;
+  background-size:100% 100%;background-position:center
+}
+body:has(#home:not(.hidden)) #home .home-world:before{display:none!important;content:none!important}
+#home .map-heading{top:2.5%;font-size:clamp(18px,2.4vw,34px)}
+#home .map-sebastian{
+  left:1.5%;bottom:2.5%;width:27%;gap:0;align-items:flex-end;
+}
+#home .map-sebastian img{
+  width:75%;max-height:none;height:auto;object-fit:contain;
+  filter:drop-shadow(0 7px 7px #003b6280)
+}
+#home .map-speech{
+  align-self:center;margin-left:-7%;max-width:42%;
+  font-size:clamp(12px,1.25vw,18px);padding:10px 13px;
+  border-radius:18px
+}
+#home .map-place{
+  width:11.5%;min-height:5.6%;height:auto;padding:5px 7px 6px;
+  border:2px solid #a96a2e;border-radius:5px;
+  background:linear-gradient(180deg,#f8d99a 0%,#d99b4e 48%,#b96f2d 52%,#e9b86e 100%);
+  box-shadow:0 3px 0 #663c1e, inset 0 1px 2px #fff8c7;
+  color:#4d2d16;text-shadow:0 1px 0 #fff0c4;
+  clip-path:polygon(4% 0,96% 0,100% 18%,97% 100%,3% 100%,0 18%);
+}
+#home .map-place:before{
+  content:"";position:absolute;left:7px;right:7px;top:3px;height:2px;
+  background:#fff7d2a8;border-radius:2px
+}
+#home .map-place span{font-size:clamp(9px,.9vw,13px);line-height:1.05}
+#home .map-place small{font-size:clamp(8px,.7vw,10px);color:#603a20;line-height:1.05}
+#home .map-place.future{
+  background:linear-gradient(180deg,#e8c58b,#c18a4c);
+  border:2px dashed #8e5a2d;box-shadow:0 3px 0 #663c1e;
+  color:#674421;opacity:.88
+}
+#home .map-place.future small{color:#674421}
+#home .map-place.library{left:31%;top:45%}
+#home .map-place.crystals{left:82%;top:44%}
+#home .map-place.shipwreck{left:61%;top:38%}
+#home .map-place.arch{left:50%;top:61%}
+#home .map-place.ruins{left:29%;top:74%}
+#home .map-place.treasure{left:77%;top:63%}
+#home .map-place.grotto{left:88%;top:81%}
+#home .map-place.coral{left:60%;top:84%}
+@media (orientation:landscape) and (max-height:650px){
+ #home .map-heading{top:1.5%;font-size:clamp(16px,2vw,25px)}
+ #home .map-sebastian{width:22%;bottom:1%}
+ #home .map-sebastian img{width:70%}
+ #home .map-place{min-height:6%;padding:3px 5px}
+}
+@media (max-width:700px) and (orientation:portrait){
+ body:has(#home:not(.hidden)) #home .home-world{background-size:cover;background-position:center}
+ #home .map-sebastian{width:31%}
+ #home .map-sebastian img{width:72%}
+ #home .map-place{width:17%;min-height:6.5%}
+}
+
 </style></head><body><main class="shell">
 <header><div class="brand"><div class="mark">🐠</div><div><h1>Leesavontuur</h1><div class="muted">Samen oefenen, op je eigen tempo</div></div></div><button class="btn" id="parent">Ouders ⚙</button></header>
 <section id="welcome" class="panel welcome"><div class="welcome-sea">🐠 🫧 🐢</div><div class="balloon-title"><span class="name">Sebastian’s</span><span class="letters">LEESAVONTUUR</span></div><p>Duik mee en ontdek de wereld van letters en woorden!</p><button class="btn primary" id="start">Duik erin!</button></section>
