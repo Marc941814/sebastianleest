@@ -1,9 +1,25 @@
-Sebastian’s Leesavontuur – versie 7 (werkversie)
+Sebastian's Leesavontuur – versie 8 (fase 1)
 
-Plaats alle bestanden en de map images rechtstreeks in de hoofdmap van de bestaande GitHub Pages-repository. Overschrijf index.html, manifest.webmanifest, sw.js en de iconen/footer.
+INHOUD
+- De bestaande leesapp v7 als technische basis.
+- Overzichtsomgeving met acht plekken: vier actieve oefenlocaties en vier nog niet actieve toekomstige plekken.
+- De vier actieve locaties zijn gekoppeld aan de herkenningspunten op de goedgekeurde oefenachtergronden:
+  * Boekenrots – Lees maar!
+  * Lichtgevende grot – Flits maar!
+  * Schelpenplek – Spel maar!
+  * Koraalpoort – Sleep maar!
+- Sebastian staat één keer in de overzichtsomgeving.
+- De zes goedgekeurde Sebastian-poses zijn als afzonderlijke PNG-bestanden opgenomen in images/sebastian/; de oorspronkelijke posekaart blijft eveneens bewaard.
+- De vier door de gebruiker goedgekeurde oefenachtergronden zijn ongewijzigd opgenomen in images/oefenachtergronden/.
+- De vier uitsneden van de herkenningspunten worden alleen gebruikt als kleine visuele verwijzingen in de overzichtsomgeving.
 
-Inhoud: vijf woordlevels volgens de definitieve v7-woordenbank, levels 6–8 zichtbaar maar vergrendeld, vier oefenvormen, behouden eigen woordgroepen, goedgekeurde illustraties, automatische spraak in Lees maar en Flits maar, en geen opslag van resultaten of voortgang.
+NOG NIET OPGENOMEN IN DEZE FASE
+- De nieuwe, uitbundige welkomstpagina met naamveld en persoonlijke begroeting.
+- De nieuwe vormgeving van de binnenkant van de vier oefeningen.
+- Definitieve invulling/activering van de vier toekomstige plekken.
 
-Offline: service worker cachet de HTML, PWA-bestanden en alle 156 goedgekeurde illustraties. Na eerste online bezoek/installatie zijn de gecachete onderdelen offline beschikbaar.
+INSTALLATIE
+Plaats alle bestanden en mappen uit deze bundel in de hoofdmap van de bestaande GitHub Pages-repository en overschrijf de bestaande bestanden. Laat de map images volledig intact. Commit en push daarna de wijzigingen. Herlaad de app daarna met Ctrl+F5; bij een geïnstalleerde PWA kan het nodig zijn de app eenmaal opnieuw te openen zodat de nieuwe service-worker-cache wordt geactiveerd.
 
-Let op: dit is een eerste technische v7-bouw. Test de app na publicatie op desktop, tablet, touchbediening en offline. Browserstemmen vereisen ondersteuning door het apparaat en kunnen offline per browser verschillen.
+CONTROLE
+Test de overzichtsomgeving op desktop en tablet, controleer de vier actieve routes, de vier niet-actieve plekken en offline laden. De bestaande oefeningen, woordenbank en instellingen zijn behouden.
